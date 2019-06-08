@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{30F222BF-FFF5-4EF5-AC87-8F970B158A0A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CadCli.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CadCli">
+        <MSBuild Projects="CadCli.dproj"/>
+    </Target>
+    <Target Name="CadCli:Clean">
+        <MSBuild Projects="CadCli.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CadCli:Make">
+        <MSBuild Projects="CadCli.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CadCli"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CadCli:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CadCli:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
